@@ -1,5 +1,8 @@
 # LedgerPilot AI
 
+[![CI](https://github.com/jse-avl/ledgerpilot-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/jse-avl/ledgerpilot-ai/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-059669.svg)](LICENSE)
+
 **Accounts payable, under control.** An AI-optional financial back-office agent:
 a deterministic core does the arithmetic and the approvals, models are an
 additive layer, and the agent can propose money movement but never execute it.

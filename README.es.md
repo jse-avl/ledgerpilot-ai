@@ -1,5 +1,8 @@
 # LedgerPilot AI
 
+[![CI](https://github.com/jse-avl/ledgerpilot-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/jse-avl/ledgerpilot-ai/actions/workflows/ci.yml)
+[![Licencia: MIT](https://img.shields.io/badge/license-MIT-059669.svg)](LICENSE)
+
 **Cuentas por pagar, bajo control.** Un agente de back-office financiero con IA
 opcional: el núcleo determinista hace la aritmética y las aprobaciones, los
 modelos son una capa adicional, y el agente puede proponer movimientos de dinero

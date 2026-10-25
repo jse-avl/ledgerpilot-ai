@@ -14,7 +14,7 @@ Legend: `[x]` done · `[~]` in progress · `[ ]` pending
 - [x] `pnpm dev` starts the shared local database, web and MCP together
 - [x] `pnpm setup` from a fresh clone: env, install, migrate, seed, doctor
 - [x] Bilingual README (EN/ES), MIT license, architecture doc and ADRs
-- [ ] Git remote + first push
+- [x] Public repo `jse-avl/ledgerpilot-ai` + first push
 
 ### `packages/core` — deterministic financial core
 - [x] Money as integer minor units + currency (never floats)
@@ -90,7 +90,7 @@ Legend: `[x]` done · `[~]` in progress · `[ ]` pending
 - [x] `pnpm db:verify` deployment check (idempotent migrations, isolation, ledger)
 - [x] ADRs: money, AI-optional, PGlite/Neon, MCP 2026, two-phase proposals,
       evals-first, Vercel Workflows (proposed)
-- [ ] Public repo `jse-avl/ledgerpilot-ai` + first push
+- [x] Public repo `jse-avl/ledgerpilot-ai` + first push
 
 ---
 
