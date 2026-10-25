@@ -1,0 +1,37 @@
+{
+  "name": "@ledgerpilot/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Drizzle schema, dual PGlite/Postgres driver, RLS migrations and deterministic demo seed.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts",
+    "./demo-data": "./src/demo-data.ts",
+    "./seed": "./src/seed.ts",
+    "./migrate": "./src/migrate.ts"
+  },
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "migrate": "tsx src/migrate.ts",
+    "seed": "tsx src/seed.ts",
+    "serve": "tsx src/serve.ts",
+    "reset": "tsx src/reset.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "verify": "tsx src/verify.ts"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "@electric-sql/pglite-socket": "^0.2.14",
+    "@ledgerpilot/core": "workspace:*",
+    "drizzle-orm": "^0.45.4",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

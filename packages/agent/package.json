@@ -1,0 +1,24 @@
+{
+  "name": "@ledgerpilot/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Capability resolver, heuristic extraction and deterministic answer templates. No API key required.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./capabilities": "./src/capabilities.ts",
+    "./extraction": "./src/extraction/index.ts"
+  },
+  "scripts": {
+    "doctor": "tsx src/doctor.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ledgerpilot/core": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

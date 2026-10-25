@@ -1,0 +1,45 @@
+{
+  "name": "ledgerpilot-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-optional financial back-office agent. Deterministic core, pluggable models, measured with evals.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.34.9",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "eval": "pnpm --filter @ledgerpilot/evals run eval",
+    "doctor": "pnpm --filter @ledgerpilot/agent run doctor",
+    "db:generate": "pnpm --filter @ledgerpilot/db run generate",
+    "db:migrate": "pnpm --filter @ledgerpilot/db run migrate",
+    "db:seed": "pnpm --filter @ledgerpilot/db run seed",
+    "db:serve": "pnpm --filter @ledgerpilot/db run serve",
+    "db:verify": "pnpm --filter @ledgerpilot/db run verify",
+    "db:reset": "pnpm --filter @ledgerpilot/db run reset",
+    "mcp:dev": "pnpm --filter @ledgerpilot/mcp run dev",
+    "setup": "node scripts/setup.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "turbo": "^2.11.10",
+    "typescript": "^7.0.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "dependencies": {
+    "@electric-sql/pglite-socket": "^0.2.14"
+  }
+}
