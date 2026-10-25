@@ -74,6 +74,10 @@ jobs:
           --health-retries 20
     env:
       DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/ledgerpilot
+      # Opt-in for the socket contract test. Keeping it separate from
+      # DATABASE_URL means `pnpm test` never opens a database a developer did
+      # not ask it to touch.
+      LEDGERPILOT_SOCKET_URL: postgres://postgres:postgres@127.0.0.1:5432/ledgerpilot
       AI_MODE: auto
     steps:
       - uses: actions/checkout@v4
@@ -98,7 +102,8 @@ jobs:
       - name: Verify isolation and the audit ledger
         run: pnpm db:verify
 
-      # The socket test is skipped locally when DATABASE_URL is empty. Here it is
-      # not: this runs the same pg wire-protocol path a deployed instance uses.
+      # Exercises the pg wire protocol against the real server. The PGlite
+      # suites are pinned to an in-memory database, so this is the one test that
+      # proves the deployed driver path, RLS role switching included.
       - name: Socket contract test against Postgres
         run: pnpm --filter @ledgerpilot/db test

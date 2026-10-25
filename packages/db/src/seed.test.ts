@@ -10,7 +10,10 @@ let result: SeedResult;
 
 describe("demo seed", () => {
   beforeAll(async () => {
-    handle = await createDatabase({ dataDir: "memory://" });
+    // Pinned for the same reason as the RLS suite: this test asserts the exact
+    // rows a fresh seed creates, so it must not inherit an already-seeded
+    // DATABASE_URL from CI or a developer shell.
+    handle = await createDatabase({ driver: "pglite", dataDir: "memory://" });
     result = await seed(handle, { silent: true });
   });
 

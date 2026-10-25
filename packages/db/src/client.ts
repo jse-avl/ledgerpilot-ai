@@ -21,6 +21,12 @@ export interface DatabaseHandle {
 }
 
 export interface CreateDatabaseOptions {
+  /**
+   * Force a driver. Without it the driver follows the environment: Postgres
+   * when a URL is configured, embedded PGlite otherwise. Tests pin this so an
+   * ambient DATABASE_URL cannot silently point them at another database.
+   */
+  readonly driver?: DriverKind;
   /** Postgres connection string. Falls back to process.env.DATABASE_URL. */
   readonly url?: string;
   /** PGlite data directory. Defaults to <repo>/.data/pglite. Use "memory://" for tests. */
@@ -65,10 +71,16 @@ function ensureDataDir(dataDir: string): string {
 export async function createDatabase(
   options: CreateDatabaseOptions = {},
 ): Promise<DatabaseHandle> {
-  const url = options.url ?? process.env.DATABASE_URL;
+  const configuredUrl = (options.url ?? process.env.DATABASE_URL)?.trim() ?? "";
+  const wantsPostgres = options.driver !== "pglite";
+  const url = wantsPostgres ? configuredUrl : "";
   const dataDir = options.dataDir ?? process.env.PGLITE_DIR ?? defaultDataDir();
 
-  if (url && url.trim() !== "") {
+  if (options.driver === "postgres" && url === "") {
+    throw new Error("createDatabase({ driver: \"postgres\" }) requires a connection URL");
+  }
+
+  if (url !== "") {
     const pool = new Pool({
       connectionString: url,
       max: Number(process.env.PG_POOL_MAX ?? 5),

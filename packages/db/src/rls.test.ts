@@ -36,7 +36,9 @@ async function asAppRole<T>(tenantId: string, fn: () => Promise<T>): Promise<T> 
 
 describe("database migrations", () => {
   beforeAll(async () => {
-    handle = await createDatabase({ dataDir: "memory://" });
+    // Pinned: CI runs this suite with DATABASE_URL pointing at a seeded
+    // Postgres. The test owns its database, so the seed counts are real.
+    handle = await createDatabase({ driver: "pglite", dataDir: "memory://" });
     await runMigrations(handle, { silent: true });
 
     await runAsTenant(handle, tenantA, async (db) => {
