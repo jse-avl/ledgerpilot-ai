@@ -87,6 +87,8 @@ Legend: `[x]` done · `[~]` in progress · `[ ]` pending
 ### Quality & delivery
 - [x] GitHub Actions CI: typecheck, tests, evals (artifact) and build
 - [x] Postgres 18 service in CI for migrations, RLS parity and ledger verification
+- [x] Socket contract test runs against the CI Postgres (`LEDGERPILOT_SOCKET_URL`);
+      PGlite suites pin their driver so an ambient `DATABASE_URL` cannot leak in
 - [x] `pnpm db:verify` deployment check (idempotent migrations, isolation, ledger)
 - [x] ADRs: money, AI-optional, PGlite/Neon, MCP 2026, two-phase proposals,
       evals-first, Vercel Workflows (proposed)
